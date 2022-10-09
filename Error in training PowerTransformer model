@@ -1,0 +1,75 @@
+(base) [kw3pj@spydur]: cat slurm-22381.out
+I ran on: spdr16
+Starting at Sun Oct  9 01:35:19 EDT 2022
+Setting up conda...
+no change     /usr/local/sw/anaconda/anaconda3/condabin/conda
+no change     /usr/local/sw/anaconda/anaconda3/bin/conda
+no change     /usr/local/sw/anaconda/anaconda3/bin/conda-env
+no change     /usr/local/sw/anaconda/anaconda3/bin/activate
+no change     /usr/local/sw/anaconda/anaconda3/bin/deactivate
+no change     /usr/local/sw/anaconda/anaconda3/etc/profile.d/conda.sh
+no change     /usr/local/sw/anaconda/anaconda3/etc/fish/conf.d/conda.fish
+no change     /usr/local/sw/anaconda/anaconda3/shell/condabin/Conda.psm1
+no change     /usr/local/sw/anaconda/anaconda3/shell/condabin/conda-hook.ps1
+no change     /usr/local/sw/anaconda/anaconda3/lib/python3.8/site-packages/xontrib/conda.xsh
+no change     /usr/local/sw/anaconda/anaconda3/etc/profile.d/conda.csh
+no change     /home/kw3pj/.bashrc
+No action taken.
+Setting up cuda...
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2021 NVIDIA Corporation
+Built on Sun_Mar_21_19:15:46_PDT_2021
+Cuda compilation tools, release 11.3, V11.3.58
+Build cuda_11.3.r11.3/compiler.29745058_0
+Running train.py
+/home/kw3pj/.conda/envs/powertransformers/lib/python3.10/site-packages/scipy/__init__.py:146: UserWarning: A NumPy version >=1.16.5 and <1.23.0 is required for this version of SciPy (detected version 1.23.1
+  warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion}"
+2022-10-09 01:35:25.228582: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-10-09 01:35:25.229002: I tensorflow/core/common_runtime/process_util.cc:146] Creating new thread pool with default inter op setting: 2. Tune using inter_op_parallelism_threads for best performance.
+ftfy or spacy is not installed using BERT BasicTokenizer instead of SpaCy & ftfy.
+/home/kw3pj/backedup/powerTransformer-master/utils_dr.py:134: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  tok_li = np.array(tok_li)
+/home/kw3pj/backedup/powerTransformer-master/utils_dr.py:134: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  tok_li = np.array(tok_li)
+/home/kw3pj/backedup/powerTransformer-master/transformers/optimization.py:166: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1659484808560/work/torch/csrc/utils/python_arg_parser.cpp:1174.)
+  exp_avg.mul_(beta1).add_(1.0 - beta1, grad)
+reading from csv
+40478
+On epoch  1 average loss is  tensor(0.9954, device='cuda:1', grad_fn=<DivBackward0>)
+Traceback (most recent call last):
+  File "/home/kw3pj/.conda/envs/powertransformers/lib/python3.10/site-packages/pandas/core/frame.py", line 3892, in _ensure_valid_index
+    value = Series(value)
+  File "/home/kw3pj/.conda/envs/powertransformers/lib/python3.10/site-packages/pandas/core/series.py", line 451, in __init__
+    data = sanitize_array(data, index, dtype, copy)
+  File "/home/kw3pj/.conda/envs/powertransformers/lib/python3.10/site-packages/pandas/core/construction.py", line 596, in sanitize_array
+    subarr = maybe_convert_platform(data)
+  File "/home/kw3pj/.conda/envs/powertransformers/lib/python3.10/site-packages/pandas/core/dtypes/cast.py", line 122, in maybe_convert_platform
+    arr = construct_1d_object_array_from_listlike(values)
+  File "/home/kw3pj/.conda/envs/powertransformers/lib/python3.10/site-packages/pandas/core/dtypes/cast.py", line 1983, in construct_1d_object_array_from_listlike
+    result[:] = values
+  File "/home/kw3pj/.conda/envs/powertransformers/lib/python3.10/site-packages/torch/_tensor.py", line 759, in __array__
+    return self.numpy().astype(dtype, copy=False)
+TypeError: can't convert cuda:1 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/kw3pj/backedup/powerTransformer-master/train.py", line 75, in <module>
+    train(args.setup)
+  File "/home/kw3pj/backedup/powerTransformer-master/train.py", line 64, in train
+    loss_df["train_loss"] = train_losses
+  File "/home/kw3pj/.conda/envs/powertransformers/lib/python3.10/site-packages/pandas/core/frame.py", line 3655, in __setitem__
+    self._set_item(key, value)
+  File "/home/kw3pj/.conda/envs/powertransformers/lib/python3.10/site-packages/pandas/core/frame.py", line 3832, in _set_item
+    value = self._sanitize_column(value)
+  File "/home/kw3pj/.conda/envs/powertransformers/lib/python3.10/site-packages/pandas/core/frame.py", line 4531, in _sanitize_column
+    self._ensure_valid_index(value)
+  File "/home/kw3pj/.conda/envs/powertransformers/lib/python3.10/site-packages/pandas/core/frame.py", line 3894, in _ensure_valid_index
+    raise ValueError(
+ValueError: Cannot set a frame with no defined index and a value that cannot be converted to a Series
+Finished at Sun Oct  9 01:45:46 EDT 2022
+
